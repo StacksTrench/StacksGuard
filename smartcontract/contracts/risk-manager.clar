@@ -35,3 +35,11 @@
     (ok score)
   )
 )
+
+(define-public (update-max-risk-score (new-score uint))
+  (begin
+    (asserts! (is-eq tx-sender contract-owner) (err u100))
+    (var-set max-risk-score new-score)
+    (ok new-score)
+  )
+)
