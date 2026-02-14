@@ -1,9 +1,12 @@
 ;; Risk Manager
 ;; Manages risk across DeFi positions
 
+(impl-trait .pausable-trait.pausable-trait)
+
 (define-constant contract-owner tx-sender)
 (define-data-var max-risk-score uint u100)
 (define-constant MAX-LTV u8000) ;; 80% LTV threshold (BIPS)
+(define-data-var is-paused bool false)
 
 (define-map position-risks principal uint)
 
@@ -42,4 +45,25 @@
     (var-set max-risk-score new-score)
     (ok new-score)
   )
+)
+
+;; Circuit Breaker Logic
+(define-public (pause-protocol)
+  (begin
+    (asserts! (is-eq tx-sender contract-owner) (err u100))
+    (var-set is-paused true)
+    (ok true)
+  )
+)
+
+(define-public (resume-protocol)
+  (begin
+    (asserts! (is-eq tx-sender contract-owner) (err u100))
+    (var-set is-paused false)
+    (ok true)
+  )
+)
+
+(define-read-only (is-system-active)
+  (ok (not (var-get is-paused)))
 )
