@@ -38,11 +38,11 @@ This document tracks the development of the StacksGuard risk management protocol
   - [ ] Update `calculate-ltv` to use oracle price.
 
 ### Issue #5: Liquidation Alert
-**Status:** ❌ PENDING
+**Status:** ✅ COMPLETED
 **Description:** Emit events when positions are at risk.
 - **Tasks:**
-  - [ ] Define alert event.
-  - [ ] Trigger event in `check-health` if risky.
+  - [x] Define alert event.
+  - [x] Trigger event in `check-health` if risky.
 
 ---
 
