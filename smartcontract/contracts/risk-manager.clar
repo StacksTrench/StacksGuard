@@ -7,6 +7,7 @@
 (define-data-var max-risk-score uint u100)
 (define-constant MAX-LTV u8000) ;; 80% LTV threshold (BIPS)
 (define-data-var is-paused bool false)
+(define-constant event-risk-alert "risk-alert")
 
 (define-map position-risks principal uint)
 
@@ -25,6 +26,11 @@
 (define-public (check-health (collateral uint) (debt uint))
   (let (
       (ltv (calculate-ltv collateral debt))
+    )
+    ;; Emit alert if risk threshold exceeded
+    (if (> ltv MAX-LTV)
+        (print { event: event-risk-alert, ltv: ltv, collateral: collateral, debt: debt })
+        true
     )
     ;; Returns true if healthy, false if at risk
     (ok (<= ltv MAX-LTV))
