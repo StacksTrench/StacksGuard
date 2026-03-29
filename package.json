@@ -20,5 +20,23 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "stacks",
+    "bitcoin",
+    "l2",
+    "blockchain",
+    "deploy"
+  ],
+  "author": "thebabalola",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StacksTrench/stacks-helpers-deploy",
+    "directory": "packages/deploy"
+  },
+  "bugs": {
+    "url": "https://github.com/StacksTrench/stacks-helpers-deploy/issues"
+  },
+  "homepage": "https://github.com/StacksTrench/stacks-helpers-deploy#readme"
 }
