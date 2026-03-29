@@ -4,12 +4,21 @@
   "description": "Deploy, verify, and manage Stacks L2 smart contracts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
-  "scripts": { "build": "tsc" },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "@stacks/transactions": "^7.2.0",
     "@stacks/network": "^7.2.0",
     "@stacks-helpers/types": "^1.0.0"
   },
-  "devDependencies": { "typescript": "^5.0.0" }
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
